@@ -1,0 +1,57 @@
+# Default trainer configuration
+_target_: pytorch_lightning.Trainer
+
+# Training parameters
+max_epochs: 50
+accelerator: cpu
+devices: 1
+precision: 32
+
+# Optimization
+gradient_clip_val: 1.0
+accumulate_grad_batches: 1
+
+# Logging and monitoring
+log_every_n_steps: 10
+val_check_interval: 1.0
+
+# Callbacks
+callbacks:
+  checkpoint:
+    _target_: pytorch_lightning.callbacks.ModelCheckpoint
+    dirpath: ${checkpoint_dir}
+    filename: contact_prediction-{epoch:02d}-{val_loss:.4f}
+    monitor: val_loss
+    mode: min
+    save_top_k: 3
+    save_last: true
+  
+  # early_stopping:
+  #   _target_: pytorch_lightning.callbacks.EarlyStopping
+  #   monitor: val_loss
+  #   mode: min
+  #   patience: 10
+  
+  lr_monitor:
+    _target_: pytorch_lightning.callbacks.LearningRateMonitor
+    logging_interval: epoch
+
+# Loggers
+logger:
+  tensorboard:
+    _target_: pytorch_lightning.loggers.TensorBoardLogger
+    save_dir: ${log_dir}
+    name: tensorboard_logs
+    version: null
+  # csv:
+  #   _target_: pytorch_lightning.loggers.CSVLogger
+  #   save_dir: ${log_dir}
+  #   name: csv_logs
+  #   version: null
+
+# Other settings
+enable_progress_bar: true
+enable_model_summary: true
+enable_checkpointing: true
+deterministic: false
+reload_dataloaders_every_n_epochs: 0 

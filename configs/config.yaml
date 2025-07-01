@@ -1,0 +1,37 @@
+# Main configuration file for protein contact prediction
+defaults:
+  - model: default
+  - data: default
+  - trainer: default
+  - experiment: quick
+  - _self_
+
+# Global settings
+hydra:
+  run:
+    dir: outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    subdir: ${hydra:job.num}
+  launcher:
+    _target_: hydra._internal.core_plugins.basic_launcher.BasicLauncher
+
+# Logging
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Random seed for reproducibility
+seed: 42
+
+# Mode: train, test, predict
+mode: train
+
+# Output directory
+output_dir: ${hydra:run.dir}
+
+# Checkpoint directory
+checkpoint_dir: ${output_dir}/checkpoints
+
+# Log directory
+log_dir: ${output_dir}/logs 

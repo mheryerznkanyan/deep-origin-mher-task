@@ -1,0 +1,12 @@
+# Default model configuration
+_target_: models.lightning_model.ContactPredictionLightningModule
+
+# Model architecture
+esm_embedding_dim: 1280
+hidden_dim: 512
+num_layers: 3
+dropout: 0.1
+
+# Training parameters
+learning_rate: 1.0e-2
+weight_decay: 1.0e-4

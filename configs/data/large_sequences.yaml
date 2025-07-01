@@ -1,0 +1,25 @@
+# Large sequences data configuration
+_target_: data.lightning_datamodule.ProteinContactDataModule
+
+# Dataset parameters
+max_length: 512
+contact_threshold: 8.0
+min_contact_distance: 6
+cache_embeddings: true
+
+# Data loading
+batch_size: 2  # Smaller batch size for larger sequences
+num_workers: 2
+
+# Data splits
+train_split: 0.7
+val_split: 0.2
+test_split: 0.1
+
+# Use sample data for testing
+use_sample_data: true
+
+# Custom sequences (if not using sample data)
+sequences: null
+pdb_ids: null
+pdb_files: null 

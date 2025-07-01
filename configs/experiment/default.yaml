@@ -1,0 +1,29 @@
+# Default experiment configuration
+
+# Experiment name
+name: default_experiment
+
+# Description
+description: "Default protein contact prediction experiment"
+
+# Tags for experiment tracking
+tags:
+  - default
+  - sample_data
+
+# Model configuration override
+model:
+  hidden_dim: 512
+  num_layers: 3
+  learning_rate: 1.0e-4
+
+# Data configuration override
+data:
+  max_length: 256
+  batch_size: 4
+  use_sample_data: true
+
+# Trainer configuration override
+trainer:
+  max_epochs: 50
+  accelerator: auto 

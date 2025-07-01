@@ -1,0 +1,32 @@
+# Hyperparameter sweep configuration
+defaults:
+  - model: default
+  - data: default
+  - trainer: default
+  - experiment: default
+  - _self_
+
+# Sweep parameters
+hydra:
+  sweeper:
+    params:
+      # Model architecture sweep
+      model.hidden_dim: 256,512,1024
+      model.num_layers: 2,3,4
+      model.learning_rate: 1.0e-4,5.0e-5,1.0e-3
+      
+      # Data configuration sweep
+      data.batch_size: 2,4,8
+      data.max_length: 128,256,512
+      
+      # Training configuration sweep
+      trainer.max_epochs: 20,50,100
+      trainer.gradient_clip_val: 0.5,1.0,2.0
+
+# Override experiment settings for sweep
+experiment:
+  name: hyperparameter_sweep
+  description: "Hyperparameter sweep for protein contact prediction"
+  tags:
+    - sweep
+    - hyperparameter_optimization 
