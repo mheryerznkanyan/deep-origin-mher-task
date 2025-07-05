@@ -1,11 +1,7 @@
 import torch
 from torch.utils.data import Dataset
 import numpy as np
-from typing import List, Tuple, Optional, Dict
-import os
 from esm2_embeddings.extract_embeddings import get_embeddings
-from preprocessing.contact_map import compute_contact_map
-from data.pdb_utils import download_pdb_structure, extract_sequence_from_pdb
 import pickle
 
 class ProteinContactDataset(Dataset):

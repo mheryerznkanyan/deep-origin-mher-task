@@ -1,6 +1,5 @@
 import os
 import glob
-import numpy as np
 import pickle
 from multiprocessing import Pool, cpu_count
 from preprocessing.contact_map import compute_contact_map

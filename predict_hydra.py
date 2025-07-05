@@ -4,12 +4,10 @@ Hydra-based prediction script for protein contact prediction model.
 """
 
 import hydra
-from omegaconf import DictConfig, OmegaConf
-import pytorch_lightning as pl
+from omegaconf import DictConfig
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
-import os
 import json
 from pathlib import Path
 import logging

@@ -1,9 +1,6 @@
 import os
 import requests
-from Bio import SeqIO
 from Bio.PDB import PDBParser
-import numpy as np
-from typing import List, Tuple, Optional
 import gzip
 import shutil
 from data.utils.residue_map import residue_3_to_1

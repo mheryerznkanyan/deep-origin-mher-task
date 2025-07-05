@@ -7,12 +7,9 @@ import hydra
 from omegaconf import DictConfig, OmegaConf
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks import Callback
-import os
 import json
 from pathlib import Path
 import logging
-import torch
-import numpy as np
 
 # Set up logging
 log = logging.getLogger(__name__)
@@ -32,7 +29,6 @@ class ConfigSaverCallback(Callback):
             OmegaConf.save(config=self.config, f=f)
         log.info(f"Configuration saved to {self.save_path}")
 
-from data.lightning_datamodule import ProteinContactDataModule
 
 
 @hydra.main(version_base=None, config_path="configs", config_name="config")

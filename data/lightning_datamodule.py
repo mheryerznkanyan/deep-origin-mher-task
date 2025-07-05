@@ -1,11 +1,10 @@
 import pytorch_lightning as pl
 from torch.utils.data import DataLoader, random_split
 from typing import Optional, List
-import os
 import glob
+import torch
 
 from data.dataset import ProteinContactDataset, collate_fn
-from data.pdb_utils import extract_sequence_from_pdb
 
 class ProteinContactDataModule(pl.LightningDataModule):
     """
@@ -203,6 +202,3 @@ class ProteinContactDataModule(pl.LightningDataModule):
             batch_size=batch_size,
             **kwargs
         )
-
-# Import torch for random_split
-import torch 

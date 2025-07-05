@@ -1,15 +1,11 @@
 import pytorch_lightning as pl
 import torch
-import torch.nn as nn
 import torch.optim as optim
 import numpy as np
 from typing import Dict, Any, Optional
 import matplotlib.pyplot as plt
-import seaborn as sns
-from pathlib import Path
 
 from models.contact_prediction_model import ContactPredictionModel, ContactPredictionLoss
-from preprocessing.contact_map import compute_contact_map  # If needed, import create_contact_mask from here if it exists
 
 class ContactPredictionLightningModule(pl.LightningModule):
     """
